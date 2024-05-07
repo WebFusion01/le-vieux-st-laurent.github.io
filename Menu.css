@@ -1,0 +1,41 @@
+.menu {
+  width: 100%;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section-header {
+  background-color: #f2f2f2;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.section-content {
+  display: none;
+}
+
+.meal {
+  padding: 10px;
+}
+
+.meal-name {
+  font-weight: bold;
+}
+
+.expand-icon {
+  float: right;
+}
+
+.section-header.active {
+  background-color: #ddd;
+}
+
+.section-header.active .expand-icon {
+  content: "-";
+}
+
+.section-header.active+.section-content {
+  display: block;
+}
