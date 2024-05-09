@@ -2155,6 +2155,14 @@ textarea.input-field {
 	background-color: var(--gold-crayola);
 }
 
+#Google_Review{
+	position: absolute;
+	left: 10px;
+	background-color: var(--gold-crayola);
+	opacity: 0.95;
+	width: 30%;
+}
+
 .text-color{
 	color: (var(--text-colors));
 }
