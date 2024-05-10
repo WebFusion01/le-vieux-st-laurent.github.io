@@ -1,0 +1,174 @@
+:root{
+	--number_of_pages : 7;
+	/**
+   * COLORS
+   */
+
+   --gold-crayola: hsla(18, 81%, 52%, 0.744);
+   --quick-silver: hsla(0, 0%, 65%, 1);
+   --davys-grey: hsla(30, 3%, 34%, 1);
+   --smoky-black-1: hsla(40, 12%, 5%, 1);
+   --smoky-black-2: hsla(30, 8%, 5%, 1);
+   --smoky-black-3: hsla(0, 3%, 7%, 1);
+   --eerie-black-1: hsla(210, 4%, 9%, 1);
+   --eerie-black-2: hsla(210, 4%, 11%, 1);
+   --eerie-black-3: hsla(180, 2%, 8%, 1);
+   --eerie-black-4: hsla(0, 0%, 13%, 1);
+   --white: hsla(0, 0%, 100%, 1);
+   --white-alpha-20: hsla(0, 0%, 100%, 0.2);
+   --white-alpha-10: hsla(0, 0%, 100%, 0.1);
+   --black: hsla(0, 0%, 0%, 1);
+   --black-alpha-80: hsla(0, 0%, 0%, 0.8);
+   --black-alpha-15: hsla(0, 0%, 0%, 0.15);
+   --text-colors: hsla(272, 100%, 50%, 0.916);
+}
+
+.desktop-btn {
+    display: none;
+}
+
+body {
+	background-color: var(--eerie-black-1);
+	color: var(--white);
+	font-family: var(--fontFamily-dm_sans);
+	font-size: var(--fontSize-body-4);
+	font-weight: var(--weight-regular);
+	line-height: var(--lineHeight-5);
+	overflow: hidden;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+	background: var(--smoky-black-1) url('../assets/images/footer-form-bg.png');
+}
+
+/* Book */
+.book { /* The outer thing */
+    position: relative;
+    width: 445px;
+    height: 600px;
+    transition: transform 0.5s;
+}
+
+.paper {
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    top: 0;
+    left: 0;
+    perspective: 1500px;
+}
+
+.front,
+.back {
+    background-color: rgb(47, 2, 2);
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.front {
+    z-index: 1;
+    backface-visibility: hidden;
+    border-left: 3px solid rgb(105, 105, 105); /* Spring thing */
+}
+
+.back {
+    z-index: 0;
+}
+
+.front-content,
+.back-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-content {
+    transform: rotateY(180deg)
+}
+
+/* Paper flip effect */
+.flipped .front,
+.flipped .back {
+    transform: rotateY(-180deg);
+}
+
+/* Controller Buttons */
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.5s;
+	z-index: 500;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover i {
+    color: #ef0606;
+}
+
+i {
+    font-size: 50px;
+    color: rgb(255, 170, 1);
+}
+
+/* Paper stack order */
+#p1 {
+    z-index: 3;
+}
+
+#p2 {
+    z-index: 2;
+}
+
+#p3 {
+    z-index: 1;
+}
+
+#p4 {
+    z-index: 0;
+}
+
+img{
+	height: 650px;
+	width: 480px;
+}
+
+#prev-btn{
+	position: relative;
+	left: -15pc;
+	top : 300px;
+}
+
+#next-btn{
+	position: relative;
+    right: -35pc;
+    top: -23pc;
+}
+
+
+
+@media (min-width: 768px) {
+    .desktop-btn {
+        display: block;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .mobile-btn {
+        display: block;
+    }
+}
