@@ -30,40 +30,46 @@
 }
 
 /* Body Styles */
-body {
-	background-color: var(--eerie-black-1);
-	color: var(--white);
-	font-family: var(--fontFamily-dm_sans);
-	font-size: var(--fontSize-body-4);
-	font-weight: var(--weight-regular);
-	line-height: var(--lineHeight-5);
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: var(--smoky-black-1) url('../assets/images/footer-form-bg.png');
+html, body {
+    overflow: hidden; /* Prevent scrollbars */
+    background-color: var(--eerie-black-1);
+    color: var(--white);
+    font-family: var(--fontFamily-dm_sans);
+    font-size: var(--fontSize-body-4);
+    font-weight: var(--weight-regular);
+    line-height: var(--lineHeight-5);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--smoky-black-1) url('../assets/images/footer-form-bg.png');
 }
+
+
 
 /* Wrapper Styles */
 .wrapper {
-	position: relative;
-    width: 410px;
-    height: 920px;
+    position: relative;
+    width: 95vw;
+    height: 85vh;
 }
+
 
 .wrapper .img {
 	position: absolute;
-	width: 100%;
-	height: 100%;
+    top: 0.5pc;
+    width: 100%;
+    height: 100%;
 }
 
 .wrapper .img img {
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
-	clip-path: circle(0% at 0% 100%);
-	transition: all 0.7s;
+    height: 100%;
+    width: 100%;
+    object-fit: fill; /* Stretch and fit the image within its container */
+    clip-path: circle(0% at 0% 100%);
+    transition: all 0.7s;
 }
+
 
 /* Image Clip Path */
 #one:checked~.img-1 img,
@@ -197,13 +203,15 @@ body {
 }
 
 .wrapper .sliders label {
-	border: 2px solid rgb(142, 197, 252);
-	width: 13px;
-	height: 13px;
-	margin: 0 3px;
-	border-radius: 50%;
-	cursor: pointer;
-	transition: all 0.3s ease;
+    border: 2px solid rgb(142, 197, 252);
+    width: 13px;
+    height: 13px;
+    margin: 0 3px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    bottom: -3.5pc;
 }
 
 .wrapper .sliders label:hover,
@@ -228,3 +236,59 @@ body {
 input[type="radio"] {
 	display: none;
 }
+
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	background-color: #333; /* Change to your desired background color */
+  }
+  
+  .navbar-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+  }
+  
+  .navbar-item {
+	margin-right: 20px;
+  }
+  
+  .navbar-link {
+	text-decoration: none;
+	color: white; /* Change to your desired text color */
+	font-size: 16px;
+	transition: color 0.3s ease;
+  }
+  
+  .navbar-link:hover {
+	color: #ccc; /* Change to your desired hover color */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+	.navbar {
+	  flex-direction: row;
+	  align-items: flex-start;
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  z-index: 999;
+	  background-color: #333; /* Change to your desired background color */
+	}
+  
+	.navbar-list {
+	  flex-direction: row;
+	  justify-content: center;
+	  width: 100%;
+	}
+  
+	.navbar-item {
+	  margin: 0 10px;
+	}
+  }
+  
