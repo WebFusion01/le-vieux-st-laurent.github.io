@@ -3,11 +3,9 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Menu</title>
-	<link rel="stylesheet" href="./menu assets/smartphone.css" media="(max-width: 767px)">
-	<link rel="stylesheet" href="./menu assets/computer.css" media="(min-width: 768px)">
+	<link rel="stylesheet" href="./menu assets/common css.css">
 
 	<script src="./menu assets/main.js" defer></script>
 	<script src="https://kit.fontawesome.com/eba7749dfa.js" crossorigin="anonymous"></script>
@@ -170,6 +168,11 @@
 	</div>
 
 	<div id="smartphone-menu">
+
+		<button id="prev-btn-mobile" class="mobile-btn">
+			<i class="fas fa-arrow-circle-left"></i>
+		</button>
+
         <div class="wrapper">
 			<input type="radio" name="slide" id="one" checked>
 			<input type="radio" name="slide" id="two">
@@ -206,7 +209,7 @@
 				<img src="./menu assets/pictures/5.jfif" alt="">
 			</div>
 			<div class="img img-7">
-				<img src="./menu assets/pictures/6.jpg" alt="">
+				<img src="./menu assets/pictures/6.jfif" alt="">
 			</div>
 			<div class="img img-8">
 				<img src="./menu assets/pictures/7.jfif" alt="">
@@ -248,55 +251,107 @@
 				<label for="fourteen" class="fourteen"></label>
 			</div>
 		</div>	
+
+		<button id="next-btn-mobile" class="mobile-btn">
+			<i class="fas fa-arrow-circle-right"></i>
+		</button>
     </div>
 
 	<script>
-        // Function to detect device type and show/hide menu accordingly
-        function showMenuByDevice() {
-            var userAgent = navigator.userAgent.toLowerCase();
-            var isSmartphone = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(userAgent);
-            
-            if (isSmartphone) {
-                document.getElementById('smartphone-menu').style.display = 'block';
-                document.getElementById('computer-menu').style.display = 'none';
-            } else {
-                document.getElementById('smartphone-menu').style.display = 'none';
-                document.getElementById('computer-menu').style.display = 'block';
-            }
-        }
-
-        // Call the function on page load
-        window.onload = function() {
-            showMenuByDevice();
-        };
 		// Function to detect device type and show/hide menu accordingly
+		function showMenuByDevice() {
+			var isComputer = window.innerWidth >= window.innerHeight;
+			if (isComputer) {
+				document.getElementById('smartphone-menu').style.display = 'none';
+				document.getElementById('computer-menu').style.display = 'block';
+			} else {
+				document.getElementById('smartphone-menu').style.display = 'block';
+				document.getElementById('computer-menu').style.display = 'none';
+			}
+		}
+
+		// Call the function on page load
+		window.onload = function () {
+			showMenuByDevice();
+		};
+
+
+		// Business Logic for mobile
+		const prevBtnMobile = document.getElementById("prev-btn-mobile");
+		const nextBtnMobile = document.getElementById("next-btn-mobile");
+		const mobilePapers = document.querySelectorAll(".img");
+		const maxLocationMobile = mobilePapers.length - 1;
+		let currentLocationMobile = 0;
+
+		// initially update the butoon.
+		prevBtnMobile.style.visibility = 'hidden';
+
+		function updateButtonVisibility() {
+			// Show prev button if not on first page
+			prevBtnMobile.style.visibility = currentLocationMobile > 0 ? "visible" : "hidden";
+			// Show next button if not on last page
+			nextBtnMobile.style.visibility = currentLocationMobile < maxLocationMobile ? "visible" : "hidden";
+		}
+
+
+
+
+		// Function to handle touch events for smartphone menu
 		document.addEventListener("DOMContentLoaded", function () {
 			let startX;
-	
+
 			document.addEventListener("touchstart", function (event) {
 				startX = event.touches[0].clientX;
 			});
-	
+
 			document.addEventListener("touchend", function (event) {
 				const endX = event.changedTouches[0].clientX;
 				const deltaX = startX - endX;
 				const currentSlide = document.querySelector('input[name="slide"]:checked');
 				let nextSlide;
-	
+
 				if (Math.abs(deltaX) > 50) { // Adjust this threshold as needed
 					if (deltaX > 0) {
 						nextSlide = currentSlide.nextElementSibling || currentSlide.parentElement.firstElementChild;
 					} else {
 						nextSlide = currentSlide.previousElementSibling || currentSlide.parentElement.lastElementChild;
 					}
-	
+
 					if (nextSlide) {
 						nextSlide.checked = true;
 					}
 				}
 			});
+
+			if (nextBtnMobile) {
+				nextBtnMobile.addEventListener("click", function () {
+					const currentSlide = document.querySelector('input[name="slide"]:checked');
+					const nextSlide = currentSlide.nextElementSibling || currentSlide.parentElement.firstElementChild;
+
+					if (nextSlide) {
+						nextSlide.checked = true;
+					}
+
+					currentLocationMobile++;
+					updateButtonVisibility();
+				});
+			}
+
+			if (prevBtnMobile) {
+				prevBtnMobile.addEventListener("click", function () {
+					const currentSlide = document.querySelector('input[name="slide"]:checked');
+					const prevSlide = currentSlide.previousElementSibling || currentSlide.parentElement.lastElementChild;
+
+					if (prevSlide) {
+						prevSlide.checked = true;
+					}
+
+					currentLocationMobile--;
+					updateButtonVisibility();
+				});
+			}
 		});
-    </script>
+	</script>
 
 </body>
 
