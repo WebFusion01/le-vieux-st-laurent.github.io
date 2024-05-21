@@ -362,7 +362,8 @@ body.nav-active {
 
 .section-subtitle {
 	position: relative;
-	color: var(--gold-crayola);
+	/* color: var(--gold-crayola); */
+	color: hsl(125.13deg 100% 75.9%);
 	font-weight: var(--weight-bold);
 	text-transform: uppercase;
 	letter-spacing: var(--letterSpacing-2);
@@ -433,7 +434,7 @@ body.nav-active {
 
 .btn-secondary {
 	background-color: var(--gold-crayola);
-	color: var(--black);
+	color: white;
 }
 
 .btn-secondary::before {
@@ -1040,6 +1041,7 @@ body.nav-active {
 
 .hero .slider-item.active .hero-text {
 	animation-delay: 1.5s;
+	font-weight: bolder;
 }
 
 .hero .slider-item.active .btn {
@@ -1546,6 +1548,7 @@ textarea.input-field {
 	background: var(--smoky-black-1) url("../images/footer-form-bg.png");
 	background-position: center top;
 	background-repeat: repeat;
+	opacity: 0.94;
 }
 
 .footer-brand::before,
@@ -2252,6 +2255,8 @@ textarea.input-field {
 
 	.topbar .container {
 		max-width: unset;
+		color: black;
+		font-weight: 900;
 	}
 
 	.topbar .separator {
